@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Analog Clock</title>
+</head>
+<body class="bg-black flex justify-center items-center min-h-screen text-white"> 
+    <div class="h-64 w-64 rounded-full border-4 border-gray-300 justify-center items-center relative">
+        <div>
+            <div class="absolute top-4 left-1/2 transform -translate-x-1/2 text-lg">12</div>
+            <div class="absolute top-8 right-12 transform text-lg">1</div>
+            <div class="absolute top-16 right-4 transform text-lg">2</div>
+            <div class="absolute top-1/2 right-2 transform -translate-y-1/2 text-lg">3</div>
+            <div class="absolute bottom-16 right-4 transform text-lg">4</div>
+            <div class="absolute bottom-8 right-12 transform text-lg">5</div>
+            <div class="absolute bottom-4 left-1/2 transform -translate-x-1/2 text-lg">6</div>
+
+            <div class="bg-black p-0 rounded text-center mt-9">
+                <div id="clock" class="relative text-lg font-bold text-white">00:00:00</div>
+            </div>
+            <div class="absolute bottom-8 left-12 transform text-lg">7</div>
+            <div class="absolute bottom-16 left-4 transform text-lg">8</div>
+            <div class="absolute top-1/2 left-2 transform -translate-y-1/2 text-lg">9</div>
+            <div class="absolute top-16 left-4 transform text-lg">10</div>
+            <div class="absolute top-8 left-12 transform text-lg">11</div>
+
+            <div class="absolute w-1 h-20 bg-red-500 top-[22%] left-1/2 transform -translate-x-1/2 origin-bottom" id="hour-hand"></div>
+            <div class="absolute w-1 h-24 bg-blue-500 top-[15%] left-1/2 transform -translate-x-1/2 origin-bottom" id="minute-hand"></div>
+            <div class="absolute w-0.5 h-28 bg-white top-[10%] left-1/2 transform -translate-x-1/2 origin-bottom" id="second-hand"></div>
+
+        <!-- Clock Center -->
+        <div class="absolute w-1 h-1 bg-white rounded-full m-28 flex"></div>
+        </div>
+
+        <script>
+            function updateClock() {
+                const now = new Date();
+                const hours = now.getHours() % 12;
+                const minutes = now.getMinutes();
+                const seconds = now.getSeconds();
+    
+                const hourDeg = (hours * 30) + (minutes * 0.5); // 30° per hour + minute offset
+                const minuteDeg = (minutes * 6) + (seconds * 0.1); // 6° per minute + second offset
+                const secondDeg = seconds * 6; // 6° per second
+    
+                document.getElementById("hour-hand").style.transform = `translateX(-50%) rotate(${hourDeg}deg)`;
+                document.getElementById("minute-hand").style.transform = `translateX(-50%) rotate(${minuteDeg}deg)`;
+                document.getElementById("second-hand").style.transform = `translateX(-50%) rotate(${secondDeg}deg)`;
+            }
+    
+            setInterval(updateClock, 1000);
+            updateClock(); // Initialize clock immediately
+
+            function updatClock() {
+            const now = new Date();
+            let hours = now.getHours();
+            let minutes = now.getMinutes();
+            let seconds = now.getSeconds();
+
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            seconds = seconds < 10 ? '0' + seconds : seconds;
+
+            document.getElementById('clock').textContent = `${hours}:${minutes}:${seconds}`;
+        }
+        setInterval(updatClock, 1000);
+        updateClock();
+        </script>
+</div>
+</body>
+</html>
