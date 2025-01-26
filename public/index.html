@@ -31,9 +31,12 @@
             <div class="absolute w-0.5 h-28 bg-white top-[10%] left-1/2 transform -translate-x-1/2 origin-bottom" id="second-hand"></div>
 
         <!-- Clock Center -->
-        <div class="absolute w-1 h-1 bg-white rounded-full m-28 flex"></div>
-        </div>
+        <!-- <div class="absolute w-1 h-1 bg-white rounded-full m-28 flex"></div> -->
+         <!-- Center Pivot (Corrected) -->
+<div class="absolute w-3 h-3 bg-white rounded-full float flex left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-3/5 shadow-md"></div>
 
+        </div>
+        </div>
         <script>
             function updateClock() {
                 const now = new Date();
@@ -68,6 +71,6 @@
         setInterval(updatClock, 1000);
         updateClock();
         </script>
-</div>
+
 </body>
 </html>
